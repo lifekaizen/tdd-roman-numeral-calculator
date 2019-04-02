@@ -1,6 +1,6 @@
 ROMAN_NUMERALS = ['I', 'V', 'X']
 def add(augend, addend):
-    if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+    if not isinstance(augend, str) or not isinstance(addend, str):
         raise ValueError
 
     simple_augend = augend.replace('IV', 'IIII')
