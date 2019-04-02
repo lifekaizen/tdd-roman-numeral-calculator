@@ -235,22 +235,9 @@ Any better?
 
     AssertionError: 'IV' != 'VI'
 
-Nope. How about this?
+Nope. We need to reverse the direction of the sort. 
 
-        ordered_sum = ''.join(reversed(simple_sum))
-
-…
-
-    AssertionError: 'IV' != 'VI'
-
-Hm, no difference. That actually had me quite puzzled for a while, until
-I figured out that, of course, `sorted` actually sorts, whereas
-`reversed` just reverses, not reverse-sorts. TDD sure can help, if
-you’re (on occasion) a bear of little brain.
-
-So we need both!
-
-    ordered_sum = ''.join(reversed(sorted(simple_sum)))
+        ordered_sum = ''.join(sorted(simple_sum,reverse=True))
 
 That gets the tests to pass
 
