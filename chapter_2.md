@@ -131,7 +131,7 @@ to cover for me when that happens.
 Thanks, tests! (Thests.)
 
     def add(augend, addend):
-        if not isinstance(addend, basestring):
+        if not isinstance(addend, str):
             raise ValueError
         return augend + addend
 
@@ -154,7 +154,7 @@ Let’s see if that will do the trick:
 Another incremental change:
 
     def add(augend, addend):
-        if not isinstance(addend, basestring):
+        if not isinstance(addend, str):
             raise ValueError
         if addend == 'V':
             raise ValueError
@@ -213,7 +213,7 @@ That’s telling us that we need to check both the augend and the addend
 for valid inputs. Here’s a minimal change:
 
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
         if addend == 'V':
             raise ValueError
@@ -237,7 +237,7 @@ space)
 Let’s fix that:
 
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
         if addend == 'V' or augend == 'Z':
             raise ValueError
@@ -250,7 +250,7 @@ Ugly, but let’s see what the tests want:
 That justifies us to write some slightly cleverer input validation:
 
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
         simple_sum = augend + addend
         if any(char != 'I' for char in simple_sum):

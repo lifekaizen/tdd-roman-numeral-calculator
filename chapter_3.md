@@ -58,7 +58,7 @@ Let’s try running that:
 Right - we’re not outputing *IV* correctly. Let’s fix that:
 
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
         simple_sum = augend + addend
         if any(char != 'I' for char in simple_sum):
@@ -86,7 +86,7 @@ How about that?
 Ah. IV might work, but V is broken. Let’s fix it:
 
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
         simple_sum = augend + addend
         if any(char != 'I' for char in simple_sum):
@@ -124,7 +124,7 @@ And try some new code:
 
     ROMAN_NUMERALS = ('I', 'V')
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
         simple_sum = augend + addend
 
@@ -157,7 +157,7 @@ with more computable 'IIII’s:
 
     ROMAN_NUMERALS = ('I', 'V')
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
 
         simple_augend = augend.replace('IV', 'IIII')
@@ -205,7 +205,7 @@ how I went about it this time:
 
     ROMAN_NUMERALS = ('I', 'V')
     def add(augend, addend):
-        if not isinstance(augend, basestring) or not isinstance(addend, basestring):
+        if not isinstance(augend, str) or not isinstance(addend, str):
             raise ValueError
 
         simple_augend = augend.replace('IV', 'IIII')
