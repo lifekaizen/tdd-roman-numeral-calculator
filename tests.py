@@ -6,7 +6,7 @@ class AdditionTest(unittest.TestCase):
     def test_adding_Is(self):
         self.assertEqual(add('I', 'I'), 'II')
         self.assertEqual(add('I', 'II'), 'III')
-
+        self.assertEqual(add('II', 'I'), 'III')
 
     def test_inputs_out_of_scope_raise_exceptions(self):
         for bad_input in [2, None, 'Z', 'L', 'C', 'D', 'M']:
@@ -14,7 +14,7 @@ class AdditionTest(unittest.TestCase):
                 add('I', bad_input)
                 if not hasattr(m, 'exception'):
                     self.fail('%s as augend did not raise exception' % bad_input)
-
+            
             with self.assertRaises(ValueError) as m:
                 add(bad_input, 'I')
                 if not hasattr(m, 'exception'):
@@ -22,11 +22,10 @@ class AdditionTest(unittest.TestCase):
 
     def test_IV_and_V(self):
         self.assertEqual(add('II', 'II'), 'IV')
+        self.assertEqual(add('II', 'III'), 'V')
         self.assertEqual(add('III', 'II'), 'V')
-        self.assertEqual(add('IV', 'I'), 'V')
         self.assertEqual(add('V', 'I'), 'VI')
         self.assertEqual(add('I', 'V'), 'VI')
-
 
     def test_IX_and_X(self):
         self.assertEqual(add('V', 'V'), 'X')
@@ -38,7 +37,11 @@ class AdditionTest(unittest.TestCase):
         self.assertEqual(add('X', 'V'), 'XV')
         self.assertEqual(add('V', 'X'), 'XV')
         self.assertEqual(add('X', 'X'), 'XX')
+        self.assertEqual(add('X', 'VI'), 'XVI')
+        self.assertEqual(add('XI', 'V'), 'XVI')
+        self.assertEqual(add('IX', 'VI'), 'XV')
+        self.assertEqual(add('IX', 'V'), 'XIV')
 
 
 if __name__ == '__main__':
-    unittest.main()
+	unittest.main(warnings='ignore')
